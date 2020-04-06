@@ -1,0 +1,19 @@
+#slcHoofd{
+  width: 150px;
+  background-color: #ccccff;
+  font-weight: bold;
+}
+
+#slcDetail{
+  width: 200px;
+  background-color: #ccffcc;
+  color:red;
+}
+
+#slcDeelnemers{
+  width: 200px;
+}
+
+#slcGenodigden{
+  width : 200px;
+}

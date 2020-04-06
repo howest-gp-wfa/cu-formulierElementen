@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cssoef.css">
+  <script src="js/script.js"></script>
+  <title>FormulierElementen</title>
+</head>
+
+<body>
+  <img class="floatrechts" src="img/logohowest.png" alt="Logo" />
+  <h1>FormulierElementen</h1>
+  <h2>Tekstvakken, tekstgebieden</h2>
+  <label for="txtIngave">Geef iets in :</label> <input id="txtIngave" type="text" placeholder="Geef iet in..." /> <br />
+  <input type="button" id="btnToevoegen" value="Toevoegen" class='btn-yellow' /> <br />
+  <textarea name="txaResult" id="txaResult" cols="20" rows="5"></textarea>
+
+  <h2>Selectie-uitlezen</h2>
+  <select name="slcTalen" id="slcTalen" size='5'>
+    <option value="Csharp">C#</option>
+    <option value="J">Java</option>
+    <option value="JS" selected='selected'>JavaScript</option>
+    <option value="VB">Visual Basic.net</option>
+  </select> <br/>
+  <button id='btnToonEerste' class='btn-yellow'>Toon eerste taal</button>
+  <button id='btnToonGeselecteerd' class='btn-yellow'>Toon geselecteerde taal</button>
+  <button id='btnToonAantal' class='btn-yellow'>Toon aantal Elementen</button>
+  <div id="divFeedback" style="color:red; font-weight:bold ;">Resultaat</div>
+
+<h2>Select - elementen verwijderen</h2>
+<select name="slcHoofd" id="slcHoofd" size='10'>
+<option value="bloemen">Bloemen</option>
+<option value="bomen">Bomen</option>
+<option value="planten">Planten</option>
+</select>
+<select name="slcDetail" id="slcDetail" size='10'></select>
+
+<h2>Select - meervoudige selectie</h2>
+<select name="slcGenodigden" id="slcGenodigden" size='10' multiple='multiple'>
+  <option value="ws">William Schokkelé</option>
+  <option value="sd">Siegfried Derdeyn</option>
+  <option value="jf">Joachim François</option>
+  <option value="sv">Stef Vercaemer</option>
+  <option value="mdd">Mileto Di Marco</option>
+  <option value="ml">Maxim Lesy</option>
+  <option value="bs">Bart Soete</option>
+</select>
+<button id='btnHeen' class='btn-pink'>&gt;&gt;</button>
+<button id='btnTerug'class='btn-pink'>&lt;&lt;</button>
+<select name="slcDeelnemers" id="slcDeelnemers" size='10'></select>
+
+<h2>Checkboxen</h2>
+<input type="checkbox" name="sport1" value="badminton"/>Badminton <br />
+<input type="checkbox" name="sport2" value="tennis" />Tennis <br />
+<input type="checkbox" name="sport3" value="voetbal" />Voetbal <br />
+<input type="checkbox" name="sport4" value="lopen" />Lopen<br />
+<input type="checkbox" name="sport5" value="schaken" />Schaken <br />
+<div id="divSporten">Geselecteerd</div>
+
+<h2>Radiobuttons</h2>
+<input type="radio" name="geslacht" value="V" /> Vrouwelijk <br />
+<input type="radio" name="geslacht" value="M" /> Mannelijk <br />
+<input type="radio" name="geslacht" value="X" /> Andere <br />
+<button id='btnToonGeslacht' class='btn-yellow'>Toon Keuze</button>
+<div id='divToonGeslacht'>Keuze</div>
+
+<h2>Formulier - controle</h2>
+<form id="frmInvul" name="frmInvul" action="mailto:email@gmail.com" method="POST" enctype="text/plain" onsubmit="return Controle()">
+  <table>
+    <tr>
+        <td> <label for="txtNaam">Naam :</label> </td>
+        <td><input name="txtNaam" id="txtNaam" type="text" value="" placeholder="Vul je familienaam in..."></td>
+    </tr>
+    <tr>
+        <td><label for="txtVoornaam"></label></td>
+        <td><input name="txtVoornaam" id="txtVoornaam" type="text" value="" placeholder="Vul je familienaam in..."></td>
+    </tr>
+    <tr>
+        <td>Geslacht:</td>
+        <td>
+            <input type="radio" name="sex" value="V" checked>Vrouwelijk
+            <input type="radio" name="sex" value="M">Mannelijk
+        </td>
+    </tr>
+</table>
+<input type="submit"  value="Toon keuze">
+
+
+</form>
+
+
+</body>
+
+</html>
