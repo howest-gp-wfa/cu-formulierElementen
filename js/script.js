@@ -2,63 +2,63 @@
 
 window.addEventListener('load',Initieer);
 
-var txtIngave, txaResult; 
-var slcTalen;
-var divFeedback;
-var slcHoofd,slcDetail;
-var slcGenodigden,slcDeelnemers;
-var cbxSporten;
-var divSporten;
-var rdbGeslacht;
-var divToonGeslacht;
-var frmInvul;
+let txtIngave, txaResult; 
+let slcTalen;
+let divFeedback;
+let slcHoofd,slcDetail;
+let slcGenodigden,slcDeelnemers;
+let cbxSporten;
+let divSporten;
+let rdbGeslacht;
+let divToonGeslacht;
+let frmInvul;
 
 const detailInhoud = [['Krokus','Roos','Tulp'], ['Eik','Es','Populier'],['Aap', 'Beer','Hond','Schaap']];
 
 
-function Initieer(){
+function Initieer() {
   let btnToevoegen;
   let btnToonEerste,btnToonGeselecteerd,btnToonAantal;
   let btnHeen, btnTerug;
   let btnToonGeslacht;
   //  DOM elementen ophalen
-  txtIngave = document.getElementById("txtIngave");
-  txaResult = document.getElementById("txaResult");
-  slcTalen = document.querySelector('#slcTalen');
-  slcHoofd = document.querySelector('#slcHoofd');
-  slcGenodigden = document.querySelector('#slcGenodigden');
-  slcDeelnemers = document.querySelector('#slcDeelnemers');
-  slcDetail = document.querySelector('#slcDetail');
-  divFeedback = document.querySelector('#divFeedback');
-  divSporten = document.querySelector('#divSporten');
-  divToonGeslacht = document.querySelector('#divToonGeslacht');
-  btnToevoegen = document.querySelector("#btnToevoegen");
-  btnToonEerste = document.querySelector('#btnToonEerste');
-  btnToonGeselecteerd = document.querySelector('#btnToonGeselecteerd');
-  btnToonAantal = document.querySelector('#btnToonAantal');
-  btnHeen = document.querySelector('#btnHeen');
-  btnTerug = document.querySelector('#btnTerug');
-  btnToonGeslacht = document.querySelector('#btnToonGeslacht');
+  txtIngave = document.getElementById("ingave");
+  txaResult = document.getElementById("result");
+  slcTalen = document.querySelector('#talen');
+  slcHoofd = document.querySelector('#hoofd');
+  slcGenodigden = document.querySelector('#genodigden');
+  slcDeelnemers = document.querySelector('#geelnemers');
+  slcDetail = document.querySelector('#detail');
+  divFeedback = document.querySelector('#feedback');
+  divSporten = document.querySelector('#sporten');
+  divToonGeslacht = document.querySelector('#toon-geslacht');
+  btnToevoegen = document.querySelector("#toevoegen");
+  btnToonEerste = document.querySelector('#toon-eerste');
+  btnToonGeselecteerd = document.querySelector('#toon-geselecteerd');
+  btnToonAantal = document.querySelector('#toon-aantal');
+  btnHeen = document.querySelector('#heen');
+  btnTerug = document.querySelector('#terug');
+  btnToonGeslacht = document.querySelector('#toon-geslacht');
   cbxSporten = document.querySelectorAll('input[type="checkbox"]');
   rdbGeslacht = document.getElementsByName('geslacht');
-  frmInvul = document.querySelector('#frmInvul');
+  frmInvul = document.querySelector('#invul');
   // Eventlisteners toevoegen
-  btnToevoegen.addEventListener('click',VulTextArea);
-  btnToonEerste.addEventListener('click',ToonEerste);
-  btnToonGeselecteerd.addEventListener('click',ToonGeselecteerd);
-  btnToonAantal.addEventListener('click',ToonAantal);
-  btnHeen.addEventListener('click',()=> Doorgeef(slcGenodigden,slcDeelnemers));
-  btnTerug.addEventListener('click', ()=> Doorgeef(slcDeelnemers,slcGenodigden));
-  btnToonGeslacht.addEventListener('click',ToonGeslacht);
-  slcHoofd.addEventListener('change',ToonDetaillijst);
-  slcDetail.addEventListener('dblclick',VerwijderElement);
+  btnToevoegen.addEventListener('click', vulTextArea);
+  btnToonEerste.addEventListener('click', toonEerste);
+  btnToonGeselecteerd.addEventListener('click', toonGeselecteerd);
+  btnToonAantal.addEventListener('click', toonAantal);
+  btnHeen.addEventListener('click',()=> doorgeef(genodigden, deelnemers));
+  btnTerug.addEventListener('click', ()=> doorgeef(deelnemers, genodigden));
+  btnToonGeslacht.addEventListener('click', toonGeslacht);
+  slcHoofd.addEventListener('change', toonDetaillijst);
+  slcDetail.addEventListener('dblclick', verwijderElement);
   
 
-  VoegEventlistenersToeAanCheckboxen();
+  voegEventlistenersToeAanCheckboxen();
 }
 
-function Controle(){
-  if(frmInvul.txtNaam.value == '' || frmInvul.txtVoornaam.value == ''){
+function controle() {
+  if(frmInvul.naam.value == '' || frmInvul.voornaam.value == ''){
     alert('Naam en voornaam invullen aub');
     return false;
   }
@@ -66,10 +66,10 @@ function Controle(){
 
 }
 
-function ToonGeslacht(){
+function toonGeslacht() {
   let retourString = "Gekozen geslacht : ";
-  for (let i=0; i<rdbGeslacht.length; i++){
-    if (rdbGeslacht[i].checked){
+  for (let i=0; i<rdbGeslacht.length; i++) {
+    if (rdbGeslacht[i].checked) {
       retourString += rdbGeslacht[i].value;
       break;
     }
@@ -77,17 +77,17 @@ function ToonGeslacht(){
   divToonGeslacht.innerHTML = retourString;
 }
 
-function VoegEventlistenersToeAanCheckboxen(){
-  for (let i = 0 ; i<cbxSporten.length; i++){
-    cbxSporten[i].addEventListener('change',VulDivSporten);
+function voegEventlistenersToeAanCheckboxen() {
+  for (let i = 0 ; i<cbxSporten.length; i++) {
+    cbxSporten[i].addEventListener('change', vulDivSporten);
   }
 
 }
 
-function VulDivSporten(){
+function vulDivSporten() {
   let retour = 'Je verkoos de sporten : ';
-  for (let i = 0 ; i<cbxSporten.length; i++){
-    if (cbxSporten[i].checked){
+  for (let i = 0 ; i<cbxSporten.length; i++) {
+    if (cbxSporten[i].checked) {
       retour += cbxSporten[i].value + ' ';
     }    
   }
@@ -95,62 +95,61 @@ function VulDivSporten(){
 
 }
 
-function Doorgeef(van,naar){
+function doorgeef(van,naar) {
   let vanLengte = van.length;
 
   // Geselecteerden toevoegen aan 'naar'
-  for(let i = 0; i<vanLengte; i++){
-    if(van[i].selected){
+  for(let i = 0; i<vanLengte; i++) {
+    if(van[i].selected) {
       naar[naar.length] = new Option(van[i].text, van[i].value);
     }
   }
 
   // Geselecteerden in 'van' verwijderen
-  for (let i=(vanLengte-1); i>=0; i--){
-    if(van[i].selected){
+  for (let i=(vanLengte-1); i>=0; i--) {
+    if(van[i].selected) {
       van[i] = null;
     }
   }
 
 }
 
-function ToonDetaillijst(){
+function toonDetaillijst() {
   let geselecteerdItem = slcHoofd.selectedIndex;
   // Leegmaken van de detailLijst
   slcDetail.length = 0;
   // Opvullen van de detailLijst
-  for(let i=0; i< detailInhoud[geselecteerdItem].length;i++){
+  for(let i=0; i< detailInhoud[geselecteerdItem].length;i++) {
     slcDetail[slcDetail.length]= new Option(detailInhoud[geselecteerdItem][i]);
   }
   // Eerste item selecteren uit de lijst
   slcDetail[0].selected = true;
 }
 
-function VerwijderElement(){
+function verwijderElement() {
   slcDetail[slcDetail.selectedIndex] = null;
-  
 }
 
-function VulTextArea(){
+function vulTextArea() {
     let invoerwaarde = txtIngave.value;
     txaResult.value += invoerwaarde + '\n';
     txtIngave.value = '';
 }
 
-function ToonEerste(){
+function toonEerste() {
   divFeedback.innerHTML='';
   let eersteTaal = slcTalen.options[0];
   // OF slcTalen[0]
   divFeedback.innerHTML = `Eerste taal = ${eersteTaal.text} met value ${eersteTaal.value}`;
 }
 
-function ToonGeselecteerd(){
+function toonGeselecteerd() {
   divFeedback.innerHTML='';
   let geselecteerdeTaal = slcTalen.options[slcTalen.selectedIndex]; // OF slcTalen[slcTalen.selectedIndex]
   divFeedback.innerHTML = `Gekozen taal = ${geselecteerdeTaal.text} met value ${geselecteerdeTaal.value}`;
 }
 
-function ToonAantal(){
+function toonAantal() {
   divFeedback.innerHTML='';
   divFeedback.innerHTML = `Aantal elementen : ${slcTalen.length} ` // OF slcTalen.options.length ;
 }
