@@ -15,24 +15,24 @@
   <img class="floatrechts" src="img/logohowest.png" alt="Logo" />
   <h1>FormulierElementen</h1>
   <h2>Tekstvakken, tekstgebieden</h2>
-  <label for="ingave">Geef iets in :</label> <input id="ingave" type="text" placeholder="Geef iet in..." /> <br />
-  <button id="toevoegen" class='btn-yellow'>Toevoegen</button> <br />
+  <label for="input">Geef iets in :</label> <input id="input" type="text" placeholder="Geef iet in..." /> <br />
+  <button id="add" class='btn-yellow'>add</button> <br />
   <textarea name="result" id="result" cols="20" rows="5"></textarea>
 
   <h2>Selectie-uitlezen</h2>
-  <select name="talen" id="talen" size='5'>
+  <select name="languages" id="languages" size='5'>
     <option value="Csharp">C#</option>
     <option value="J">Java</option>
     <option value="JS" selected='selected'>JavaScript</option>
     <option value="VB">Visual Basic.net</option>
   </select> <br/>
-  <button id='toon-eerste' class='btn-yellow'>Toon eerste taal</button>
-  <button id='toon-geselecteerd' class='btn-yellow'>Toon geselecteerde taal</button>
-  <button id='toon-aantal' class='btn-yellow'>Toon aantal Elementen</button>
+  <button id='show-first' class='btn-yellow'>Toon eerste taal</button>
+  <button id='show-selected' class='btn-yellow'>Toon geselecteerde taal</button>
+  <button id='show-number-of' class='btn-yellow'>Toon aantal Elementen</button>
   <div id="feedback" style="color:red; font-weight:bold ;">Resultaat</div>
 
 <h2>Select - elementen verwijderen</h2>
-<select name="hoofd" id="hoofd" size='10'>
+<select name="head" id="head" size='10'>
 <option value="bloemen">Bloemen</option>
 <option value="bomen">Bomen</option>
 <option value="planten">Planten</option>
@@ -40,7 +40,7 @@
 <select name="detail" id="detail" size='10'></select>
 
 <h2>Select - meervoudige selectie</h2>
-<select name="genodigden" id="genodigden" size='10' multiple='multiple'>
+<select name="invites" id="invites" size='10' multiple='multiple'>
   <option value="ws">William Schokkelé</option>
   <option value="sd">Siegfried Derdeyn</option>
   <option value="jf">Joachim François</option>
@@ -49,9 +49,9 @@
   <option value="ml">Maxim Lesy</option>
   <option value="bs">Bart Soete</option>
 </select>
-<button id='heen' class='btn-pink'>&gt;&gt;</button>
-<button id='terug'class='btn-pink'>&lt;&lt;</button>
-<select name="deelnemers" id="deelnemers" size='10'></select>
+<button id='away' class='btn-pink'>&gt;&gt;</button>
+<button id='back'class='btn-pink'>&lt;&lt;</button>
+<select name="participants" id="participants" size='10'></select>
 
 <h2>Checkboxen</h2>
 <input type="checkbox" name="sport1" value="badminton"/>Badminton <br />
@@ -59,28 +59,28 @@
 <input type="checkbox" name="sport3" value="voetbal" />Voetbal <br />
 <input type="checkbox" name="sport4" value="lopen" />Lopen<br />
 <input type="checkbox" name="sport5" value="schaken" />Schaken <br />
-<div id="sporten">Geselecteerd</div>
+<div id="sports">Geselecteerd</div>
 
 <h2>Radiobuttons</h2>
-<input type="radio" name="geslacht" value="V" /> Vrouwelijk <br />
-<input type="radio" name="geslacht" value="M" /> Mannelijk <br />
-<input type="radio" name="geslacht" value="X" /> Andere <br />
-<button id='toon-geslacht' class='btn-yellow'>Toon Keuze</button>
-<div id='toon-geslacht'>Keuze</div>
+<input type="radio" name="sex" value="V" /> Vrouwelijk <br />
+<input type="radio" name="sex" value="M" /> Mannelijk <br />
+<input type="radio" name="sex" value="X" /> Andere <br />
+<button id='show-sex' class='btn-yellow'>Toon Keuze</button>
+<div id='show-sex'>Keuze</div>
 
 <h2>Formulier - controle</h2>
-<form id="invul" name="invul" action="mailto:email@gmail.com" method="POST" enctype="text/plain" onsubmit="return controle()">
+<form id="fill" name="fill" action="mailto:email@gmail.com" method="POST" enctype="text/plain" onsubmit="return check()">
   <table>
     <tr>
-        <td> <label for="naam">Naam :</label> </td>
-        <td><input name="naam" id="naam" type="text" value="" placeholder="Vul je familienaam in..."></td>
+        <td> <label for="lastname">lastname :</label> </td>
+        <td><input name="lastname" id="lastname" type="text" value="" placeholder="Vul je familienaam in..."></td>
     </tr>
     <tr>
-        <td><label for="voornaam"></label></td>
-        <td><input name="voornaam" id="voornaam" type="text" value="" placeholder="Vul je familienaam in..."></td>
+        <td><label for="firstname"></label></td>
+        <td><input name="firstname" id="firstname" type="text" value="" placeholder="Vul je familielastname in..."></td>
     </tr>
     <tr>
-        <td>Geslacht:</td>
+        <td>sex:</td>
         <td>
             <input type="radio" name="sex" value="V" checked>Vrouwelijk
             <input type="radio" name="sex" value="M">Mannelijk
@@ -88,7 +88,6 @@
     </tr>
 </table>
 <input type="submit"  value="Toon keuze">
-
 
 </form>
 
