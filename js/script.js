@@ -1,23 +1,27 @@
 "use strict";
 
-window.addEventListener("load",initialize);
+window.addEventListener("load", initialize);
 
 let inpInput, txaResult; 
 let slcLanguages;
 let divFeedback;
-let slcHead,slcDetail;
-let slcInvites,slcParticipants;
+let slcHead, slcDetail;
+let slcInvites, slcParticipants;
 let ckbSports;
 let divSports;
 let rdbSex;
 let divShowSex;
 let frmFill;
 
-const detailContents = [["Krokus","Roos","Tulp"], ["Eik","Es","Populier"],["Aap", "Beer","Hond","Schaap"]];
+const DETAILS = [
+  ["Krokus", "Roos", "Tulp"], 
+  ["Eik", "Es", "Populier"],
+  ["Aap", "Beer", "Hond", "Schaap"]
+];
 
 
 function initialize() {
-  //  DOM elementen ophalen
+
   inpInput = document.getElementById("input");
   txaResult = document.getElementById("result");
   slcLanguages = document.querySelector("#languages");
@@ -27,7 +31,12 @@ function initialize() {
   slcDetail = document.querySelector("#detail");
   divFeedback = document.querySelector("#feedback");
   divSports = document.querySelector("#sports");
-  divShowSex = document.querySelector("#show-sex");
+  divShowSex = document.querySelector("#show-sex-result");
+  ckbSports = document.querySelectorAll("input[type='checkbox']");
+  rdbSex = document.getElementsByName("sex");
+  frmFill = document.querySelector("#fill");
+
+  
   const btnAdd = document.querySelector("#add");
   const btnShowFirst = document.querySelector("#show-first");
   const btnShowSelected = document.querySelector("#show-selected");
@@ -35,16 +44,12 @@ function initialize() {
   const btnBack = document.querySelector("#away");
   const btnAway = document.querySelector("#back");
   const btnShowSex = document.querySelector("#show-sex");
-  ckbSports = document.querySelectorAll("input[type='checkbox']");
-  rdbSex = document.getElementsByName("sex");
-  frmFill = document.querySelector("#fill");
-  // Eventlisteners toevoegen
   btnAdd.addEventListener("click", fillTextArea);
   btnShowFirst.addEventListener("click", showFirst);
   btnShowSelected.addEventListener("click", showSelected);
   btnShowQuantity.addEventListener("click", showNumberOfElements);
-  btnBack.addEventListener("click",()=> pass(slcInvites, slcParticipants));
-  btnAway.addEventListener("click", ()=> pass(slcParticipants, slcInvites));
+  btnBack.addEventListener("click",() => pass(slcInvites, slcParticipants));
+  btnAway.addEventListener("click", () => pass(slcParticipants, slcInvites));
   btnShowSex.addEventListener("click", showSex);
   slcHead.addEventListener("change", showDetailList);
   slcDetail.addEventListener("dblclick", removeElement);
@@ -53,7 +58,7 @@ function initialize() {
 }
 
 function check() {
-  if(frmFill.lastname.value == "" || frmFill.firstname.value == "") {
+  if(frmFill.lastname.value === "" || frmFill.firstname.value === "") {
     alert("Naam en voornaam invullen aub");
     return false;
   }
@@ -61,46 +66,46 @@ function check() {
 }
 
 function showSex() {
-  let retourString = "Gekozen geslacht : ";
-  for (let i=0; i<rdbSex.length; i++) {
+  let message = "Gekozen geslacht: ";
+  for (let i = 0; i < rdbSex.length; i++) {
     if (rdbSex[i].checked) {
-      retourString += rdbSex[i].value;
+      message += rdbSex[i].value;
       break;
     }
   }
-  divShowSex.innerHTML = retourString;
+  divShowSex.textContent = message;
 }
 
 function AddEventListenersToCheckboxes() {
-  for (let i = 0 ; i<ckbSports.length; i++) {
+  for (let i = 0 ; i < ckbSports.length; i++) {
     ckbSports[i].addEventListener("change", fillDivSports);
   }
 
 }
 
 function fillDivSports() {
-  let retour = "Je verkoos de sporten : ";
+  let message = "Je verkoos de sporten: ";
   for (let i = 0 ; i<ckbSports.length; i++) {
     if (ckbSports[i].checked) {
-      retour += ckbSports[i].value + " ";
+      message += ckbSports[i].value + " ";
     }    
   }
-  divSports.innerHTML = retour;
+  divSports.textContent = message;
 
 }
 
-function pass(from,to) {
-  let fromLengte = from.length;
+function pass(from, to) {
+  const fromLength = from.length;
 
   // Geselecteerden toevoegen aan "naar"
-  for(let i = 0; i<fromLengte; i++) {
+  for(let i = 0; i < fromLength; i++) {
     if(from[i].selected) {
       to[to.length] = new Option(from[i].text, from[i].value);
     }
   }
 
   // Geselecteerden in "van" verwijderen
-  for (let i=(fromLengte-1); i>=0; i--) {
+  for (let i = (fromLength - 1); i >= 0; i--) {
     if(from[i].selected) {
       from[i] = null;
     }
@@ -113,8 +118,8 @@ function showDetailList() {
   // Leegmaken van de detailLijst
   slcDetail.length = 0;
   // Opvullen van de detailLijst
-  for(let i=0; i< detailContents[selectedItem].length;i++) {
-    slcDetail[slcDetail.length]= new Option(detailContents[selectedItem][i]);
+  for(let i = 0; i < DETAILS[selectedItem].length; i++) {
+    slcDetail[slcDetail.length]= new Option(DETAILS[selectedItem][i]);
   }
   // Eerste item selecteren uit de lijst
   slcDetail[0].selected = true;
@@ -125,25 +130,24 @@ function removeElement() {
 }
 
 function fillTextArea() {
-    let input = inpInput.value;
+    const input = inpInput.value;
     txaResult.value += input + "\n";
     inpInput.value = "";
 }
 
 function showFirst() {
-  divFeedback.innerHTML="";
-  let firstLanguage = slcLanguages.options[0];
-  // OF slcLanguages[0]
-  divFeedback.innerHTML = `Eerste taal = ${firstLanguage.text} met value ${firstLanguage.value}`;
+  const firstLanguage = slcLanguages.options[0]; // OF slcLanguages[0]
+  divFeedback.textContent = "";
+  divFeedback.textContent = `Eerste taal = ${firstLanguage.text} met value ${firstLanguage.value}`;
 }
 
 function showSelected() {
-  divFeedback.innerHTML="";
-  const selectedLanguage = slcLanguages.options[slcLanguages.selectedIndex]; // OF slcLanguages[slcLanguages.selectedIndex]
-  divFeedback.innerHTML = `Gekozen taal = ${selectedLanguage.text} met value ${selectedLanguage.value}`;
+  const selectedLanguage = slcLanguages.options[slcLanguages.selectedIndex]; // OF slcLanguages[slcLanguages.selectedIndex];
+  divFeedback.textContent= "";
+  divFeedback.textContent = `Gekozen taal = ${selectedLanguage.text} met value ${selectedLanguage.value}`;
 }
 
 function showNumberOfElements() {
-  divFeedback.innerHTML="";
-  divFeedback.innerHTML = `Aantal elementen : ${slcLanguages.length} ` // OF slcLanguages.options.length ;
+  divFeedback.textContent= "";
+  divFeedback.textContent = `Aantal elementen: ${slcLanguages.length} `; // OF slcLanguages.options.length;
 }

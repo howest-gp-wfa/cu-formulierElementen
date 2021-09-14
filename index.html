@@ -16,31 +16,31 @@
   <h1>FormulierElementen</h1>
   <h2>Tekstvakken, tekstgebieden</h2>
   <label for="input">Geef iets in :</label> <input id="input" type="text" placeholder="Geef iet in..." /> <br />
-  <button id="add" class='btn-yellow'>add</button> <br />
+  <button id="add" class="btn-yellow">add</button> <br />
   <textarea name="result" id="result" cols="20" rows="5"></textarea>
 
   <h2>Selectie-uitlezen</h2>
-  <select name="languages" id="languages" size='5'>
+  <select name="languages" id="languages" size="5">
     <option value="Csharp">C#</option>
     <option value="J">Java</option>
-    <option value="JS" selected='selected'>JavaScript</option>
+    <option value="JS" selected="selected">JavaScript</option>
     <option value="VB">Visual Basic.net</option>
   </select> <br/>
-  <button id='show-first' class='btn-yellow'>Toon eerste taal</button>
-  <button id='show-selected' class='btn-yellow'>Toon geselecteerde taal</button>
-  <button id='show-number-of' class='btn-yellow'>Toon aantal Elementen</button>
+  <button id="show-first" class="btn-yellow">Toon eerste taal</button>
+  <button id="show-selected" class="btn-yellow">Toon geselecteerde taal</button>
+  <button id="show-number-of" class="btn-yellow">Toon aantal Elementen</button>
   <div id="feedback" style="color:red; font-weight:bold ;">Resultaat</div>
 
 <h2>Select - elementen verwijderen</h2>
-<select name="head" id="head" size='10'>
+<select name="head" id="head" size="10">
 <option value="bloemen">Bloemen</option>
 <option value="bomen">Bomen</option>
-<option value="planten">Planten</option>
+<option value="dieren">Dieren</option>
 </select>
-<select name="detail" id="detail" size='10'></select>
+<select name="detail" id="detail" size="10"></select>
 
 <h2>Select - meervoudige selectie</h2>
-<select name="invites" id="invites" size='10' multiple='multiple'>
+<select name="invites" id="invites" size="10" multiple="multiple">
   <option value="ws">William Schokkelé</option>
   <option value="sd">Siegfried Derdeyn</option>
   <option value="jf">Joachim François</option>
@@ -49,9 +49,9 @@
   <option value="ml">Maxim Lesy</option>
   <option value="bs">Bart Soete</option>
 </select>
-<button id='away' class='btn-pink'>&gt;&gt;</button>
-<button id='back'class='btn-pink'>&lt;&lt;</button>
-<select name="participants" id="participants" size='10'></select>
+<button id="away" class="btn-pink">&gt;&gt;</button>
+<button id="back"class="btn-pink">&lt;&lt;</button>
+<select name="participants" id="participants" size="10"></select>
 
 <h2>Checkboxen</h2>
 <input type="checkbox" name="sport1" value="badminton"/>Badminton <br />
@@ -65,8 +65,8 @@
 <input type="radio" name="sex" value="V" /> Vrouwelijk <br />
 <input type="radio" name="sex" value="M" /> Mannelijk <br />
 <input type="radio" name="sex" value="X" /> Andere <br />
-<button id='show-sex' class='btn-yellow'>Toon Keuze</button>
-<div id='show-sex'>Keuze</div>
+<button id="show-sex" class="btn-yellow">Toon Keuze</button>
+<div id="show-sex-result">Keuze</div>
 
 <h2>Formulier - controle</h2>
 <form id="fill" name="fill" action="mailto:email@gmail.com" method="POST" enctype="text/plain" onsubmit="return check()">
