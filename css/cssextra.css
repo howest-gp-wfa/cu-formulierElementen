@@ -1,19 +1,19 @@
-#slcHoofd{
+#head {
   width: 150px;
   background-color: #ccccff;
   font-weight: bold;
 }
 
-#slcDetail{
+#detail {
   width: 200px;
   background-color: #ccffcc;
   color:red;
 }
 
-#slcDeelnemers{
+#participants {
   width: 200px;
 }
 
-#slcGenodigden{
-  width : 200px;
+#invites {
+  width: 200px;
 }

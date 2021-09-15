@@ -54,7 +54,7 @@ function initialize() {
   slcHead.addEventListener("change", showDetailList);
   slcDetail.addEventListener("dblclick", removeElement);
   
-  AddEventListenersToCheckboxes();
+  addEventListenersToCheckboxes();
 }
 
 function check() {
@@ -76,8 +76,8 @@ function showSex() {
   divShowSex.textContent = message;
 }
 
-function AddEventListenersToCheckboxes() {
-  for (let i = 0 ; i < ckbSports.length; i++) {
+function addEventListenersToCheckboxes() {
+  for (let i = 0; i < ckbSports.length; i++) {
     ckbSports[i].addEventListener("change", fillDivSports);
   }
 
@@ -85,7 +85,7 @@ function AddEventListenersToCheckboxes() {
 
 function fillDivSports() {
   let message = "Je verkoos de sporten: ";
-  for (let i = 0 ; i<ckbSports.length; i++) {
+  for (let i = 0; i<ckbSports.length; i++) {
     if (ckbSports[i].checked) {
       message += ckbSports[i].value + " ";
     }    
@@ -148,6 +148,6 @@ function showSelected() {
 }
 
 function showNumberOfElements() {
-  divFeedback.textContent= "";
+  divFeedback.textContent = "";
   divFeedback.textContent = `Aantal elementen: ${slcLanguages.length} `; // OF slcLanguages.options.length;
 }
